@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer')
 const { sendCode, sendPub, sendApproval, sendBlank, sendArticle } = require('./functions')
 
-class mailer {
+class Mailer {
     constructor() {
         this.options = {}
         this.transporter = nodemailer.createTransport({
@@ -120,4 +120,4 @@ class mailer {
     }
 }
 
-module.exports = mailer
+module.exports = Mailer

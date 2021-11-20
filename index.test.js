@@ -23,7 +23,7 @@ describe('All methods in Class mailer', () => {
         });
 
         test('with options : shouldn\'t pass', () => {
-            return agent.connect('red').catch((e) => { })
+            return agent.connect('red').catch((e) => {console.log(e); })
         });
 
     });

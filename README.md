@@ -163,8 +163,11 @@ agent.sendApproval(
 ```
 
 <h3 id="funcsendPub" style="color:#ff80ab;">
-<a href="#funcsendPub"># agent.sendPub(imgUrl:string, title:string, description:string, link:string)</a></h3>
+<a href="#funcsendPub"># agent.sendPub(imgUrl:string, title:string, description:string, openkLink:string)</a></h3>
 
+<p align="center">
+  <img width="" src="https://github.com/dykoffi/files/raw/main/demoSendPub.png" alt="sendPub ciql mailer Demo">
+</p>
 <p style="font-size:16.5px">
 Use this template to send Pub email with redirect link.
 </p>

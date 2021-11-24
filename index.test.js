@@ -3,7 +3,7 @@ const agent = new mailer()
 
 
 describe('All methods in Class mailer', () => {
-
+    agent.setOptions({ from: "edy@ci.com ", to: "koffiedy@gmail.com", subject: "Ok test auto" })
     describe('connect method', () => {
 
         test('with options : try with flase identifiants, shouldn t pass', () => {
@@ -15,7 +15,7 @@ describe('All methods in Class mailer', () => {
                     user: "mailer@ciql.org",
                     pass: "#Mailerisfreeandusenodejs1",
                 },
-            }).catch((e) => { console.log(e) })
+            }).catch((e) => { console.log(e.message) })
         });
         test('with options : should pass', () => {
             return agent.connect({
@@ -26,7 +26,7 @@ describe('All methods in Class mailer', () => {
                     user: "mailer@ciql.org",
                     pass: "#Mailerisfreeandusenodejs1",
                 },
-            }).then(() => { console.log("edi"); })
+            }).then()
         });
 
         test('without options : should pass ', () => {
@@ -40,11 +40,15 @@ describe('All methods in Class mailer', () => {
     });
 
     describe('Send Pub methods', () => {
-        agent.setOptions({ from: "edy@ci.com ", to: "koffiedy@gmail.com", subject: "Ok test auto" })
         test('should pass', async () => {
-            await agent.sendBlank("salut Edy, ça va ?").then(() => { console.log("mail sent") })
+            await agent.sendBlank("salut Edy, ça va ?").then()
 
         });
     });
 
+    describe('Send Pub methods', () => {
+        test('should pass', async () => {
+            await agent.sendBlank("salut Edy, ça va ?").then()
+        });
+    });
 });

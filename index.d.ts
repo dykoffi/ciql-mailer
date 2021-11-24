@@ -27,7 +27,7 @@ interface connOpts {
 }
 
 declare class mailer {
-    options: connOpts;
+    options: mailOpts;
     transporter: any;
     /**
      *

@@ -90,7 +90,12 @@ agent.setoptions({
 })
 
 agent.sendBlank("HI <b>You</b>, I'm very happy to see you today.")
-
+.then(() => {
+  //Do something
+})
+.catch( err => {
+  //Do something
+})
 ```
 
 <h3 id="funcsendCode" style="color:#ff80ab;">
@@ -114,6 +119,12 @@ agent.setoptions({
 })
 
 agent.sendCode("Verification code", "https://images.com/eiug254ef")
+.then((code) => {
+  //Do something
+})
+.catch( err => {
+  //Do something
+})
 
 ```
 
@@ -137,8 +148,18 @@ agent.setoptions({
   priority: "high", 
 })
 
-agent.sendCode("Production Approval", "Do you accept condition to deploy now ?", "https://api.approvals.com/no",  "https://api. approvals.com/yes")
-
+agent.sendApproval(
+  "Production Approval", 
+  "Do you accept condition to deploy now ?", 
+  "https://api.approvals.com/no",  
+  "https://api.approvals.com/yes"
+  )
+.then(() => {
+  //Do something
+})
+.catch( err => {
+  //Do something
+})
 ```
 
 <h3 id="funcsendPub" style="color:#ff80ab;">
@@ -161,7 +182,17 @@ agent.setoptions({
   priority: "high", 
 })
 
-agent.sendCode("https://images.com/eiug254ef", "New product", "For developers and manager, it is very important", "https://products.com/seemore")
+agent.sendPub(
+  "https://images.com/eiug254ef", 
+  "New product", 
+  "For developers and managers, it is very important", 
+  "https://products.com/seemore")
+.then(() => {
+  //Do something
+})
+.catch( err => {
+  //Do something
+})
 
 ```
 

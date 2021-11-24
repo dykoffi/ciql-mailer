@@ -13,7 +13,6 @@ class Mailer {
                 pass: "#Mailerisfreeandusenodejs1",
             },
         })
-
     }
 
     /**

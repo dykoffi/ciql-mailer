@@ -12,12 +12,5 @@ pipeline {
         sh 'yarn test'
       }
     }
-
-    stage('Publish') {
-      steps {
-        sh 'yarn puslish'
-      }
-    }
-
   }
 }

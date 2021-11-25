@@ -13,6 +13,10 @@
 > 
 > npm install ciql-mailer
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/dykoffi/files/main/alldemo.png" alt="ciql mailer all demo picture">
+</p>
+
 <h1 style="color:#9fa8da;">Usage</h1>
 
 ```js
@@ -21,6 +25,7 @@ const agent = new Mailer()
 
 agent.connect()
 ```
+
 <h3 id="funcconnect" style="color:#ff80ab;">
 <a href="#funcconnect"># agent.connect()</a></h3>
 
@@ -90,14 +95,22 @@ agent.setoptions({
 })
 
 agent.sendBlank("HI <b>You</b>, I'm very happy to see you today.")
-
+.then(() => {
+  //Do something
+})
+.catch((err) => {
+  //Do something
+})
 ```
 
 <h3 id="funcsendCode" style="color:#ff80ab;">
 <a href="#funcsendCode"># agent.sendCode(title:string, imgUrl:string)</a></h3>
+<p align="center">
+  <img width="" src="https://raw.githubusercontent.com/dykoffi/files/main/sendCode.png" alt="sendPub ciql mailer Demo">
+</p>
 
 <p style="font-size:16.5px">
-Use this template to send email for blank. This function return the code which have been generated.
+Use this template to send email with code verification template. This function return the code which have been generated.
 </p>
 
 ```js
@@ -114,11 +127,20 @@ agent.setoptions({
 })
 
 agent.sendCode("Verification code", "https://images.com/eiug254ef")
+.then((code) => {
+  //Do something
+})
+.catch((err) => {
+  //Do something
+})
 
 ```
 
 <h3 id="funcsendApproval" style="color:#ff80ab;">
 <a href="#funcsendApproval"># agent.sendApproval(title:string, description:string, noLink:string, yesLink:string)</a></h3>
+<p align="center">
+  <img width="" src="https://github.com/dykoffi/files/raw/main/demoSendApproval.png" alt="sendPub ciql mailer Demo">
+</p>
 
 <p style="font-size:16.5px">
 Use this template to send approval email.
@@ -137,13 +159,26 @@ agent.setoptions({
   priority: "high", 
 })
 
-agent.sendCode("Production Approval", "Do you accept condition to deploy now ?", "https://api.approvals.com/no",  "https://api. approvals.com/yes")
-
+agent.sendApproval(
+  "Production Approval", 
+  "Do you accept condition to deploy now ?", 
+  "https://api.approvals.com/no",  
+  "https://api.approvals.com/yes"
+  )
+.then(() => {
+  //Do something
+})
+.catch((err) => {
+  //Do something
+})
 ```
 
 <h3 id="funcsendPub" style="color:#ff80ab;">
-<a href="#funcsendPub"># agent.sendPub(imgUrl:string, title:string, description:string, link:string)</a></h3>
+<a href="#funcsendPub"># agent.sendPub(imgUrl:string, title:string, description:string, openkLink:string)</a></h3>
 
+<p align="center">
+  <img width="" src="https://github.com/dykoffi/files/raw/main/demoSendPub.png" alt="sendPub ciql mailer Demo">
+</p>
 <p style="font-size:16.5px">
 Use this template to send Pub email with redirect link.
 </p>
@@ -161,10 +196,68 @@ agent.setoptions({
   priority: "high", 
 })
 
-agent.sendCode("https://images.com/eiug254ef", "New product", "For developers and manager, it is very important", "https://products.com/seemore")
+agent.sendPub(
+  "https://images.com/eiug254ef", 
+  "New product", 
+  "For developers and managers, it is very important", 
+  "https://products.com/seemore")
+.then(() => {
+  //Do something
+})
+.catch((err) => {
+  //Do something
+})
 
 ```
 
+<h3 id="sendArticle" style="color:#ff80ab;">
+<a href="#sendArticle"># agent.sendArticle(title:string, description:string, imgUrl:string,  paragraphs:Array)</a></h3>
+
+<p align="center">
+  <img width="" src="https://raw.githubusercontent.com/dykoffi/files/main/sendArticle.png" alt="sendPub ciql mailer Demo">
+</p>
+<p style="font-size:16.5px">
+Use this template to send Article email with one or many paragraphs.
+</p>
+
+```js
+const Mailer = require('ciql-mailer')
+const agent = new Mailer()
+
+agent.connect()
+
+agent.setoptions({ 
+  subject: "Information about you", 
+  from: "me@ciql.org", 
+  to: "you@xyz.com",
+  priority: "high", 
+})
+
+agent.sendArticle(
+  "New product", 
+  "For developers and managers, it is very important", 
+  "https://images.com/eiug254ef", 
+  [
+    {
+    title : "",
+    img : "",
+    text:""
+  },
+  {
+    title : "",
+    text:""
+  }
+  
+  ]
+  )
+.then(() => {
+  //Do something
+})
+.catch((err) => {
+  //Do something
+})
+
+```
 
 
 <h1 style="color:#9fa8da;">Licence</h1>

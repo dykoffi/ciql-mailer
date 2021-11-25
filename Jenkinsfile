@@ -12,5 +12,12 @@ pipeline {
         sh 'yarn test'
       }
     }
+
+    stage('npm deploy') {
+      steps {
+        sh 'npm publish'
+      }
+    }
+
   }
 }

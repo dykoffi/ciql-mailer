@@ -6,7 +6,7 @@
  * @param {object} options
  * @param {object} transporter
  */
-export function sendCode(title: string, image: string, options: object, transporter: object): Promise<number>;
+export function sendCode(title: string, description: string, code: string, options: object, transporter: object): Promise<number>;
 /**
  *
  * @param {string} image

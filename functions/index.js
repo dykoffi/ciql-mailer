@@ -10,11 +10,14 @@ const { join } = require('path')
  * @param {object} transporter 
  */
 
-function sendCode(title, image, options, transporter) {
+function sendCode(title, description, code, options, transporter) {
     return new Promise(async (resolve, reject) => {
         try {
 
-            let code = Math.floor(Math.random() * 9999)
+            if (!title || !description || !code || !options || !transporter) {
+                throw Error("Missing parameters")
+            }
+
             let email = options.to
 
             await transporter.sendMail({
@@ -47,6 +50,10 @@ function sendPub(image, title, description, link, options, transporter) {
     return new Promise(async (resolve, reject) => {
         try {
 
+            if (!title || !image || !description || !link || !options || !transporter) {
+                throw Error("Missing parameters")
+            }
+
             await transporter.sendMail({
                 from: options.from,
                 to: options.to,
@@ -76,6 +83,10 @@ function sendApproval(title, description, noLink, yesLink, options, transporter)
     return new Promise(async (resolve, reject) => {
         try {
 
+            if (!title || !description || !noLink || !yesLink || !options || !transporter) {
+                throw Error("Missing parameters")
+            }
+
             await transporter.sendMail({
                 from: options.from,
                 to: options.to,
@@ -101,6 +112,10 @@ function sendApproval(title, description, noLink, yesLink, options, transporter)
 function sendBlank(body, options, transporter) {
     return new Promise(async (resolve, reject) => {
         try {
+
+            if (!body || !options || !transporter) {
+                throw Error("Missing parameters")
+            }
 
             await transporter.sendMail({
                 from: options.from,
@@ -130,6 +145,9 @@ function sendBlank(body, options, transporter) {
 function sendArticle(title, description, imgUrl, paragraphs, options, transporter) {
     return new Promise(async (resolve, reject) => {
         try {
+            if (!title || !description || !imgUrl || !paragraphs || !options || !transporter) {
+                throw Error("Missing parameters")
+            }
 
             await transporter.sendMail({
                 from: options.from,

@@ -53,8 +53,8 @@ describe('All methods in Class mailer', () => {
             await agent.sendPub("Titre", "Bonnjour, ", "pour vous tous", "https://ccu.ciql.org").then()
         });
 
-        test('shouldnt pass', async () => {
-            await agent.sendPub().then()
+        test('shouldnt pass', () => {
+            return expect(agent.sendPub()).rejects.toThrow()
         });
     });
 

@@ -98,7 +98,7 @@ agent.sendBlank("HI <b>You</b>, I'm very happy to see you today.")
 .then(() => {
   //Do something
 })
-.catch( err => {
+.catch((err) => {
   //Do something
 })
 ```
@@ -110,7 +110,7 @@ agent.sendBlank("HI <b>You</b>, I'm very happy to see you today.")
 </p>
 
 <p style="font-size:16.5px">
-Use this template to send email for blank. This function return the code which have been generated.
+Use this template to send email with code verification template. This function return the code which have been generated.
 </p>
 
 ```js
@@ -130,7 +130,7 @@ agent.sendCode("Verification code", "https://images.com/eiug254ef")
 .then((code) => {
   //Do something
 })
-.catch( err => {
+.catch((err) => {
   //Do something
 })
 
@@ -168,7 +168,7 @@ agent.sendApproval(
 .then(() => {
   //Do something
 })
-.catch( err => {
+.catch((err) => {
   //Do something
 })
 ```
@@ -204,7 +204,7 @@ agent.sendPub(
 .then(() => {
   //Do something
 })
-.catch( err => {
+.catch((err) => {
   //Do something
 })
 
@@ -253,7 +253,7 @@ agent.sendArticle(
 .then(() => {
   //Do something
 })
-.catch( err => {
+.catch((err) => {
   //Do something
 })
 

@@ -39,16 +39,52 @@ describe('All methods in Class mailer', () => {
 
     });
 
-    describe('Send Pub methods', () => {
+    describe('Send blank methods', () => {
         test('should pass', async () => {
             await agent.sendBlank("salut Edy, ça va ?").then()
-
+        });
+        test('shouldn t pass', async () => {
+            await agent.sendBlank().catch(err => { console.log(err); })
         });
     });
 
     describe('Send Pub methods', () => {
         test('should pass', async () => {
-            await agent.sendBlank("salut Edy, ça va ?").then()
+            await agent.sendPub("Titre", "Bonnjour, ", "pour vous tous", "https://ccu.ciql.org").then()
+        });
+
+        test('shouldnt pass', async () => {
+            await agent.sendPub().then()
+        });
+    });
+
+    describe('Send Article methods', () => {
+        test('should pass', async () => {
+            await agent.sendArticle("Titre", "Bonnjour, ", "pour vous tous", ["edy"]).then()
+        });
+
+        test('shouldnt pass', async () => {
+            await agent.sendArticle().then()
+        });
+    });
+
+    describe('Send Code methods', () => {
+        test('should pass', async () => {
+            await agent.sendCode().then()
+        });
+
+        test('shouldnt pass', async () => {
+            await agent.sendCode("ef").then()
+        });
+    });
+
+    describe('Send Approval methods', () => {
+        test('should pass', async () => {
+            await agent.sendApproval("title", "descr", "https://yes.link.com", "https://no.link.com").then()
+        });
+
+        test('shouldnt pass', async () => {
+            await agent.sendApproval().then()
         });
     });
 });

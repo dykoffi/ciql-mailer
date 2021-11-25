@@ -7,12 +7,12 @@ interface parItem {
 }
 
 interface mailOpts {
-    from : string
-    to : string
-    cc : string
-    bcc : string
-    priority : string
-    subject : string
+    from: string
+    to: string
+    cc: string
+    bcc: string
+    priority: string
+    subject: string
 
 }
 
@@ -69,7 +69,7 @@ declare class mailer {
      * @param {string} yesLink
      * @returns {Promise}
      */
-    sendApproval(title: string, description: string, noLink: string, yesLink: string): Promise<any>;
+    sendApproval(title: string, description: string, yesLink: string, noLink: string): Promise<any>;
     /**
      * Send an email withh Pub template
      * @param {string} imgUrl

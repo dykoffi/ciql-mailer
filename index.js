@@ -20,7 +20,7 @@ class Mailer {
      * @param {object} options 
      */
     connect(options) {
-        return new Promise(async (resolve, reject)=>{
+        return new Promise(async (resolve, reject) => {
             try {
                 this.transporter = !options ? this.transporter : nodemailer.createTransport(options)
                 await this.transporter.verify()
@@ -30,7 +30,7 @@ class Mailer {
                 reject(error)
             }
         })
-        
+
     }
 
     /**
@@ -94,7 +94,7 @@ class Mailer {
      * @param {string} yesLink 
      * @returns {Promise}
      */
-    sendApproval(title, description, noLink, yesLink) {
+    sendApproval(title, description, yesLink, noLink) {
         return new Promise((resolve, reject) => {
             sendApproval(title, description, noLink, yesLink, this.options, this.transporter)
                 .then(code => { resolve(code) })

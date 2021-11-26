@@ -3,8 +3,8 @@ env:
   commonjs: true
   es2021: true
   node: true
-extends:
-  - google
+  jest : true
+extends: "eslint:recommended"
 parserOptions:
-  ecmaVersion: 'latest'
-rules: {}
+  ecmaVersion: "latest"
+rules: { }

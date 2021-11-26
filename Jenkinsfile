@@ -13,12 +13,6 @@ pipeline {
       }
     }
 
-    stage('npm deploy') {
-      steps {
-        sh 'npm publish'
-      }
-    }
-
   }
   post{
       always {

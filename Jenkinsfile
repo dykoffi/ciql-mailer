@@ -23,6 +23,7 @@ pipeline {
   post{
       always {
           archiveArtifacts(artifacts: 'coverage/*', fingerprint: true, onlyIfSuccessful: false)
+          junit("coverage/clover.xml")
       }
   }
 }

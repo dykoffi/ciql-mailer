@@ -12,6 +12,13 @@ pipeline {
         sh 'yarn test-cover'
       }
     }
+
+    stage('npm deploy') {
+      steps {
+        sh 'npm publish'
+      }
+    }
+
   }
   post{
       always {

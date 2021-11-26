@@ -12,27 +12,26 @@ const { join } = require('path');
 
 async function sendCode(title, description, code, options, transporter) {
 
-  const email = options.to
-  const html = await ejs.renderFile(join(__dirname, '../templates/mailCode.ejs'), { title, code, email })
-  return new Promise((resolve, reject) => {
-    try {
-      if (!title || !description || !code || !options || !transporter) {
-        throw Error('Missing parameters');
-      }
-
-      transporter.sendMail({
-        from: options.from,
-        to: email,
-        subject: options.subject,
-        priority: options.priority,
-        html: html
-      });
-
-      resolve(code);
-    } catch (error) {
-      reject(error.message);
+  try {
+    if (!title || !description || !code || !options || !transporter) {
+      throw Error('Missing parameters');
     }
-  });
+
+    const email = options.to
+
+    await transporter.sendMail({
+      from: options.from,
+      to: email,
+      subject: options.subject,
+      priority: options.priority,
+      html: await ejs.renderFile(join(__dirname, '../templates/mailCode.ejs'), { title, code, email })
+    });
+
+    return code
+  } catch (error) {
+    throw Error(error)
+  }
+
 }
 
 
@@ -48,26 +47,23 @@ async function sendCode(title, description, code, options, transporter) {
  */
 async function sendPub(image, title, description, link, options, transporter) {
 
-  const html = await ejs.renderFile(join(__dirname, '../templates/mailPub.ejs'), { image, title, description, link })
-  return new Promise((resolve, reject) => {
-    try {
-      if (!title || !image || !description || !link || !options || !transporter) {
-        throw Error('Missing parameters');
-      }
+  try {
 
-      transporter.sendMail({
-        from: options.from,
-        to: options.to,
-        subject: options.subject,
-        priority: options.priority,
-        html: html
-      });
-
-      resolve();
-    } catch (error) {
-      reject(error.message);
+    if (!title || !image || !description || !link || !options || !transporter) {
+      throw Error('Missing parameters');
     }
-  });
+
+    await transporter.sendMail({
+      from: options.from,
+      to: options.to,
+      subject: options.subject,
+      priority: options.priority,
+      html: await ejs.renderFile(join(__dirname, '../templates/mailPub.ejs'), { image, title, description, link })
+    });
+
+  } catch (error) {
+    throw Error(error)
+  }
 }
 
 /**
@@ -82,27 +78,24 @@ async function sendPub(image, title, description, link, options, transporter) {
  */
 async function sendApproval(title, description, noLink, yesLink, options, transporter) {
 
-  const html = await ejs.renderFile(join(__dirname, '../templates/mailApproval.ejs'), { title, description, noLink, yesLink })
-  return new Promise((resolve, reject) => {
-    try {
-      if (!title || !description || !noLink ||
-        !yesLink || !options || !transporter) {
-        throw Error('Missing parameters');
-      }
-
-      transporter.sendMail({
-        from: options.from,
-        to: options.to,
-        subject: options.subject,
-        priority: options.priority,
-        html: html
-      });
-
-      resolve();
-    } catch (error) {
-      reject(error.message);
+  try {
+    
+    if (!title || !description || !noLink || !yesLink || !options || !transporter) {
+      throw Error('Missing parameters');
     }
-  });
+    
+    await transporter.sendMail({
+      from: options.from,
+      to: options.to,
+      subject: options.subject,
+      priority: options.priority,
+      html: await ejs.renderFile(join(__dirname, '../templates/mailApproval.ejs'), { title, description, noLink, yesLink })
+    });
+
+  } catch (error) {
+    throw Error(error)
+  }
+
 }
 
 /**
@@ -114,26 +107,21 @@ async function sendApproval(title, description, noLink, yesLink, options, transp
  */
 async function sendBlank(body, options, transporter) {
 
-  const html = await ejs.renderFile(join(__dirname, '../templates/mailBlank.ejs'), { body })
-  return new Promise((resolve, reject) => {
-    try {
-      if (!body || !options || !transporter) {
-        throw Error('Missing parameters');
-      }
-
-      transporter.sendMail({
-        from: options.from,
-        to: options.to,
-        subject: options.subject,
-        priority: options.priority,
-        html: html,
-      });
-
-      resolve();
-    } catch (error) {
-      reject(error.message);
+  try {
+    if (!body || !options || !transporter) {
+      throw Error('Missing parameters');
     }
-  });
+    
+    await transporter.sendMail({
+      from: options.from,
+      to: options.to,
+      subject: options.subject,
+      priority: options.priority,
+      html: await ejs.renderFile(join(__dirname, '../templates/mailBlank.ejs'), { body }),
+    });
+  } catch (error) {
+    throw Error(error)
+  }
 }
 
 /**
@@ -148,27 +136,22 @@ async function sendBlank(body, options, transporter) {
  */
 async function sendArticle(title, description, imgUrl, paragraphs, options, transporter) {
 
-  const html = await ejs.renderFile(join(__dirname, '../templates/mailArticle.ejs'), { title, description, imgUrl, paragraphs })
-  return new Promise((resolve, reject) => {
-    try {
-      if (!title || !description || !imgUrl ||
-        !paragraphs || !options || !transporter) {
-        throw Error('Missing parameters');
-      }
-
-      transporter.sendMail({
-        from: options.from,
-        to: options.to,
-        subject: options.subject,
-        priority: options.priority,
-        html: html,
-      });
-
-      resolve();
-    } catch (error) {
-      reject(error.message);
+  try {
+    if (!title || !description || !imgUrl || !paragraphs || !options || !transporter) {
+      throw Error('Missing parameters');
     }
-  });
+    
+    await transporter.sendMail({
+      from: options.from,
+      to: options.to,
+      subject: options.subject,
+      priority: options.priority,
+      html: await ejs.renderFile(join(__dirname, '../templates/mailArticle.ejs'), { title, description, imgUrl, paragraphs }),
+    });
+
+  } catch (error) {
+    throw Error(error)
+  }
 }
 
 module.exports.sendCode = sendCode;

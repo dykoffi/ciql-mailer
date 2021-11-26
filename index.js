@@ -4,7 +4,7 @@ const {
   sendPub,
   sendApproval,
   sendBlank,
-  sendArticle} = require('./functions');
+  sendArticle } = require('./functions');
 
 class Mailer {
   constructor() {
@@ -25,17 +25,13 @@ class Mailer {
  * @param {object} options
  * @return {Promise<any>}
  */
-  connect(options) {
-    return new Promise((resolve, reject) => {
-      try {
-        this.transporter = !options ? this.transporter : nodemailer.createTransport(options);
-        this.transporter.verify();
-        resolve();
-      } catch (error) {
-        console.log(error.message);
-        reject(error);
-      }
-    });
+  async connect(options) {
+    try {
+      this.transporter = !options ? this.transporter : nodemailer.createTransport(options);
+      await this.transporter.verify();
+    } catch (error) {
+      throw Error(error);
+    }
   }
 
   /**
@@ -53,33 +49,27 @@ class Mailer {
        * @returns {Promise}
        */
 
-  sendCode(title, imgUrl) {
-    return new Promise((resolve, reject) => {
-      sendCode(title, imgUrl, this.options, this.transporter)
-          .then((code) => {
-            resolve(code);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-    });
+  async sendCode(title, description, code,) {
+    try {
+      const codeGen = await sendCode(title, description, code, this.options, this.transporter)
+      return codeGen
+    } catch (error) {
+      throw Error(error)
+    }
+
   }
 
   /**
-       * Send a blank email
-       * @param {string} body
-       * @return {Promise}
-       */
-  sendBlank(body) {
-    return new Promise((resolve, reject) => {
-      sendBlank(body, this.options, this.transporter)
-          .then((code) => {
-            resolve(code);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-    });
+   * Send a blank email
+   * @param {string} body
+   * @return {Promise}
+   */
+  async sendBlank(body) {
+    try {
+      await sendBlank(body, this.options, this.transporter)
+    } catch (error) {
+      throw Error(error)
+    }
   }
 
   /**
@@ -92,16 +82,12 @@ class Mailer {
        */
 
   // eslint-disable-next-line require-jsdoc
-  sendArticle(title, description, imgUrl, paragraphs = []) {
-    return new Promise((resolve, reject) => {
-      sendArticle(title, description, imgUrl, paragraphs, this.options, this.transporter)
-          .then((code) => {
-            resolve(code);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-    });
+  async sendArticle(title, description, imgUrl, paragraphs = []) {
+    try {
+      await sendArticle(title, description, imgUrl, paragraphs, this.options, this.transporter)
+    } catch (error) {
+      throw Error(error)
+    }
   }
 
   /**
@@ -112,16 +98,12 @@ class Mailer {
        * @param {string} yesLink
        * @return {Promise}
        */
-  sendApproval(title, description, yesLink, noLink) {
-    return new Promise((resolve, reject) => {
-      sendApproval(title, description, noLink, yesLink, this.options, this.transporter)
-          .then((code) => {
-            resolve(code);
-          })
-          .catch((err) => {
-            reject(err);
-          });
-    });
+  async sendApproval(title, description, yesLink, noLink) {
+    try {
+      await sendApproval(title, description, noLink, yesLink, this.options, this.transporter)
+    } catch (error) {
+      throw Error(error)
+    }
   }
 
   /**
@@ -132,16 +114,12 @@ class Mailer {
        * @param {string} link
        * @return {Promise}
        */
-  sendPub(imgUrl, title, description, link) {
-    return new Promise((resolve, reject) => {
-      sendPub(imgUrl, title, description, link, this.options, this.transporter)
-          .then(() => {
-            resolve();
-          })
-          .catch((err) => {
-            reject(err);
-          });
-    });
+  async sendPub(imgUrl, title, description, link) {
+    try {
+      await sendPub(imgUrl, title, description, link, this.options, this.transporter)
+    } catch (error) {
+      throw Error(error)
+    }
   }
 }
 

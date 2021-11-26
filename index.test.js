@@ -3,9 +3,9 @@ const agent = new Mailer();
 
 
 describe('All methods in Class mailer', () => {
-  agent.setOptions({ from: 'edy@ci.com ', to: 'koffiedy@gmail.com', subject: 'Ok test auto' });
+  agent.setOptions({ from: 'edyle manager', to: 'koffiedy@gmail.com', subject: 'Ok test auto' });
   describe('connect method', () => {
-    test('with options : try with flase identifiants, shouldn t pass', () => {
+    test('with options : try with false identifiants, shouldn t pass', () => {
       return agent.connect({
         host: 'node3-ca.n0c.co',
         port: 465,
@@ -45,46 +45,38 @@ describe('All methods in Class mailer', () => {
     test('should pass', async () => {
       await agent.sendBlank('salut Edy, ça va ?').then();
     });
-    test('shouldn t pass', async () => {
-      await agent.sendBlank().catch((err) => {
-        console.log(err);
-      });
+    test('shouldn t pass', () => {
+      return expect(agent.sendBlank()).rejects.toThrow()
     });
   });
 
   describe('Send Pub methods', () => {
     test('should pass', async () => {
-      await agent.sendPub('Titre', 'Bonnjour, ', 'pour vous tous', 'https://ccu.ciql.org').then();
+      await agent.sendPub('Titre', 'Bonnjour, ', 'pour vous tous', 'https://ccu.ciql.org').then()
     });
 
     test('shouldnt pass', () => {
-      return agent.sendPub().catch((e) => console.log(e));
+      return expect(agent.sendPub()).rejects.toThrow()
     });
   });
 
   describe('Send Article methods', () => {
     test('should pass', async () => {
-      await agent.sendArticle('Titre', 'Bonnjour, ', 'pour vous tous', ['edy']).then();
+      await agent.sendArticle('Titre', 'Bonnjour, ', 'pour vous tous', ['edy']).then()
     });
 
-    test('shouldnt pass', async () => {
-      await agent.sendArticle().catch((e) => {
-        console.log(e);
-      });
+    test('shouldnt pass', () => {
+      return expect(agent.sendArticle()).rejects.toThrow()
     });
   });
 
   describe('Send Code methods', () => {
-    test('should pass', async () => {
-      await agent.sendCode('code', 'https://image.com/rriugr5rferf').catch((e) => {
-        console.log(e);
-      });
+    test('should pass', () => {
+      return expect(agent.sendCode('code', 'https://image.com/rriugr5rferf', 1485)).resolves.toBe(1485)
     });
 
-    test('shouldnt pass', async () => {
-      await agent.sendCode('ef').catch((e) => {
-        console.log(e);
-      });
+    test('shouldnt pass', () => {
+      return expect(agent.sendCode('ef')).rejects.toThrow()
     });
   });
 
@@ -93,10 +85,8 @@ describe('All methods in Class mailer', () => {
       await agent.sendApproval('title', 'descr', 'https://yes.link.com', 'https://no.link.com').then();
     });
 
-    test('shouldnt pass', async () => {
-      await agent.sendApproval().catch((e) => {
-        console.log(e);
-      });
+    test('shouldnt pass', () => {
+      return expect(agent.sendApproval()).rejects.toThrow()
     });
   });
 });

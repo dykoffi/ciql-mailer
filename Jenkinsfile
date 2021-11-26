@@ -16,8 +16,8 @@ pipeline {
   }
   post{
       always {
-          archiveArtifacts(artifacts: 'coverage/*', fingerprint: true, onlyIfSuccessful: false)
-          junit("junit.xml")
+          archiveArtifacts artifacts: 'coverage/*, junit.xml', fingerprint: true
+          junit 'junit.xml'
       }
   }
 }

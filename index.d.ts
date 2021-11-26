@@ -45,7 +45,7 @@ declare class mailer {
      * @param {string} imgUrl
      * @returns {Promise}
      */
-    sendCode(title: string, imgUrl: string): Promise<any>;
+    sendCode(title: string, description: string, code: number): Promise<any>;
     /**
      * Send a blank email
      * @param {string} body

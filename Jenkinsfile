@@ -9,7 +9,7 @@ pipeline {
 
     stage('Test') {
       steps {
-        sh 'yarn test'
+        sh 'yarn test-cover'
       }
     }
 
@@ -19,5 +19,10 @@ pipeline {
       }
     }
 
+  }
+  post{
+      always {
+          archiveArtifacts(artifacts: 'coverage/*', fingerprint: true, onlyIfSuccessful: false)
+      }
   }
 }

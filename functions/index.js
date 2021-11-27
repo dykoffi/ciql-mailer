@@ -24,7 +24,7 @@ async function sendCode(title, description, code, options, transporter) {
       to: email,
       subject: options.subject,
       priority: options.priority,
-      html: await ejs.renderFile(join(__dirname, '../templates/mailCode.ejs'), { title, code, email })
+      html: await ejs.renderFile(join(__dirname, '../templates/mailCode.ejs'), { title, description, code })
     });
 
     return code

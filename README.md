@@ -126,7 +126,7 @@ agent.setoptions({
   priority: "high", 
 })
 
-agent.sendCode("Verification code", "https://images.com/eiug254ef")
+agent.sendCode("Verification code", "Use this code to validate your account", 2536)
 .then((code) => {
   //Do something
 })

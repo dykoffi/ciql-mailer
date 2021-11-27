@@ -14,7 +14,7 @@ async function sendCode(title, description, code, options, transporter) {
 
   try {
     if (!title || !description || !code || !options || !transporter) {
-      throw Error('Missing parameters');
+      throw new Error('Missing parameters');
     }
 
     const email = options.to
@@ -29,7 +29,7 @@ async function sendCode(title, description, code, options, transporter) {
 
     return code
   } catch (error) {
-    throw Error(error)
+    throw new Error(error)
   }
 
 }
@@ -50,7 +50,7 @@ async function sendPub(image, title, description, link, options, transporter) {
   try {
 
     if (!title || !image || !description || !link || !options || !transporter) {
-      throw Error('Missing parameters');
+      throw new Error('Missing parameters');
     }
 
     await transporter.sendMail({
@@ -62,7 +62,7 @@ async function sendPub(image, title, description, link, options, transporter) {
     });
 
   } catch (error) {
-    throw Error(error)
+    throw new Error(error)
   }
 }
 
@@ -81,7 +81,7 @@ async function sendApproval(title, description, noLink, yesLink, options, transp
   try {
     
     if (!title || !description || !noLink || !yesLink || !options || !transporter) {
-      throw Error('Missing parameters');
+      throw new Error('Missing parameters');
     }
     
     await transporter.sendMail({
@@ -93,7 +93,7 @@ async function sendApproval(title, description, noLink, yesLink, options, transp
     });
 
   } catch (error) {
-    throw Error(error)
+    throw new Error(error)
   }
 
 }
@@ -109,7 +109,7 @@ async function sendBlank(body, options, transporter) {
 
   try {
     if (!body || !options || !transporter) {
-      throw Error('Missing parameters');
+      throw new Error('Missing parameters');
     }
     
     await transporter.sendMail({
@@ -120,7 +120,7 @@ async function sendBlank(body, options, transporter) {
       html: await ejs.renderFile(join(__dirname, '../templates/mailBlank.ejs'), { body }),
     });
   } catch (error) {
-    throw Error(error)
+    throw new Error(error)
   }
 }
 
@@ -138,7 +138,7 @@ async function sendArticle(title, description, imgUrl, paragraphs, options, tran
 
   try {
     if (!title || !description || !imgUrl || !paragraphs || !options || !transporter) {
-      throw Error('Missing parameters');
+      throw new Error('Missing parameters');
     }
     
     await transporter.sendMail({
@@ -150,7 +150,7 @@ async function sendArticle(title, description, imgUrl, paragraphs, options, tran
     });
 
   } catch (error) {
-    throw Error(error)
+    throw new Error(error)
   }
 }
 

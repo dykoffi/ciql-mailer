@@ -30,7 +30,7 @@ agent.connect()
 <a href="#funcconnect"># agent.connect()</a></h3>
 
 <p style="font-size:16.5px">
-connect method permit you to initialmize connection with mail.ciql.org credentials. If you want to use your own smtp configuration, use options parameter like this : 
+connect method permit you to initialize connection with mail.ciql.org credentials. If you want to use your own smtp configuration, use options parameter like this : 
 </p>
 
 ```js
@@ -126,7 +126,7 @@ agent.setoptions({
   priority: "high", 
 })
 
-agent.sendCode("Verification code", "https://images.com/eiug254ef")
+agent.sendCode("Verification code", "Use this code to validate your account", 2536)
 .then((code) => {
   //Do something
 })
@@ -238,16 +238,15 @@ agent.sendArticle(
   "For developers and managers, it is very important", 
   "https://images.com/eiug254ef", 
   [
+      {
+      title : "",
+      img : "",
+      text:""
+    },
     {
-    title : "",
-    img : "",
-    text:""
-  },
-  {
-    title : "",
-    text:""
-  }
-  
+      title : "",
+      text:""
+    }
   ]
   )
 .then(() => {
@@ -258,7 +257,7 @@ agent.sendArticle(
 })
 
 ```
-
+<p style="font-size:16.5px">Paragraphs parameter contains one or many paragraphs in Array. Each paragraph is an object with image, title and text attributes.</p>
 
 <h1 style="color:#9fa8da;">Licence</h1>
 <p>

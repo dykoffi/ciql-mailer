@@ -3,7 +3,12 @@ const agent = new Mailer();
 
 
 describe('All methods in Class mailer', () => {
-  agent.setOptions({ from: 'edyle manager', to: 'koffiedy@gmail.com', subject: 'Ok test auto' });
+
+  describe('Before connection', () => {
+    test('Test without connect agent ', () => {
+      expect(() => { agent.setOptions({ from: 'edyle manager', to: 'koffiedy@gmail.com', subject: 'Ok test auto' }) }).toThrow()
+    });
+  });
   describe('connect method', () => {
     test('with options : try with false identifiants, shouldn t pass', () => {
       return agent.connect({
@@ -40,6 +45,13 @@ describe('All methods in Class mailer', () => {
       });
     });
   });
+
+  describe('After connection', () => {
+    test('setoptions', () => {
+      return agent.setOptions({ from: 'edyle manager', to: 'koffiedy@gmail.com', subject: 'Ok test auto' });
+    });
+  });
+
 
   describe('Send blank methods', () => {
     test('should pass', async () => {

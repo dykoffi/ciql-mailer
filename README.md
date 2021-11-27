@@ -5,7 +5,7 @@
 
 <h1 align="center" style="color:grey">CIQL MAILER</h1>
 <p style="font-size:18.5px; border-bottom:1px solid grey; padding-bottom:30px" align="justify">
-    CIQl Mailer is a tool witch permit you to send mailer with many tempates you can use for do it.
+    CIQl Mailer is a tool which permits you to send mailer with many templates you can use for it.
 </p>
 <h1 style="color:#9fa8da;">Intallation</h1>
 
@@ -30,7 +30,7 @@ agent.connect()
 <a href="#funcconnect"># agent.connect()</a></h3>
 
 <p style="font-size:16.5px">
-connect method permit you to initialize connection with mail.ciql.org credentials. If you want to use your own smtp configuration, use options parameter like this : 
+connect method permits you to initialize connection with mail.ciql.org credentials. If you want to use your own smtp configuration, use options parameter like this : 
 </p>
 
 ```js
@@ -71,7 +71,7 @@ agent.setoptions({
 ```
 
 <p style="font-size:16.5px; color : red; font-weight:bold">
-NB : connect() and setOptions() methods are required before sending mailer
+NB : connect() and setOptions() methods are required before sending email.
 </p>
 
 <h3 id="funcsendBlank" style="color:#ff80ab;">
@@ -110,7 +110,7 @@ agent.sendBlank("HI <b>You</b>, I'm very happy to see you today.")
 </p>
 
 <p style="font-size:16.5px">
-Use this template to send email with code verification template. This function return the code which have been generated.
+Use this template to send email with code verification template. This function return the code which have been given.
 </p>
 
 ```js

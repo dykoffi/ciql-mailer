@@ -1,7 +1,7 @@
 const nodemailer = require('nodemailer');
 const {
   sendCode,
-  sendPub,
+  sendAds,
   sendApproval,
   sendBlank,
   sendArticle } = require('./functions');
@@ -12,10 +12,11 @@ class Mailer {
     this.connected = false;
     this.transporter = nodemailer.createTransport({
       host: 'node3-ca.n0c.com',
+      pool: true,
       port: 465,
       secure: true,
       auth: {
-        user: 'mailer@ciql.org',
+        user: 'ciql-mailer@ciql.org',
         pass: '#Mailerisfreeandusenodejs1',
       },
     });
@@ -121,9 +122,9 @@ class Mailer {
        * @param {string} link
        * @return {Promise}
        */
-  async sendPub(imgUrl, title, description, link) {
+  async sendAds(imgUrl, title, description, link) {
     try {
-      await sendPub(imgUrl, title, description, link, this.options, this.transporter)
+      await sendAds(imgUrl, title, description, link, this.options, this.transporter)
     } catch (error) {
       throw new Error(error)
     }

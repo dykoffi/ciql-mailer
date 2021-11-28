@@ -45,7 +45,7 @@ async function sendCode(title, description, code, options, transporter) {
  * @param {object} transporter
  * @returns
  */
-async function sendPub(image, title, description, link, options, transporter) {
+async function sendAds(image, title, description, link, options, transporter) {
 
   try {
 
@@ -155,7 +155,7 @@ async function sendArticle(title, description, imgUrl, paragraphs, options, tran
 }
 
 module.exports.sendCode = sendCode;
-module.exports.sendPub = sendPub;
+module.exports.sendAds = sendAds;
 module.exports.sendApproval = sendApproval;
 module.exports.sendBlank = sendBlank;
 module.exports.sendArticle = sendArticle;

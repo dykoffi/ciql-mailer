@@ -177,7 +177,7 @@ agent.sendApproval(
 <a href="#funcsendPub"># agent.sendPub(imgUrl:string, title:string, description:string, openkLink:string)</a></h3>
 
 <p align="center">
-  <img width="" src="https://github.com/dykoffi/files/raw/main/demoSendPub.png" alt="sendPub ciql mailer Demo">
+  <img width="" src="https://github.com/dykoffi/files/raw/main/sendAds.png" alt="sendPub ciql mailer Demo">
 </p>
 <p style="font-size:16.5px">
 Use this template to send Pub email with redirect link.
@@ -196,7 +196,7 @@ agent.setoptions({
   priority: "high", 
 })
 
-agent.sendPub(
+agent.sendAds(
   "https://images.com/eiug254ef", 
   "New product", 
   "For developers and managers, it is very important", 

@@ -17,7 +17,7 @@ export function sendCode(title: string, description: string, code: string, optio
  * @param {object} transporter
  * @returns
  */
-export function sendPub(image: string, title: string, description: string, link: string, options: object, transporter: object): Promise<any>;
+export function sendAds(image: string, title: string, description: string, link: string, options: object, transporter: object): Promise<any>;
 /**
  *
  * @param {string} title

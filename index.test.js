@@ -15,8 +15,9 @@ describe('All methods in Class mailer', () => {
         host: 'node3-ca.n0c.co',
         port: 465,
         secure: true,
+        pool: true,
         auth: {
-          user: 'mailer@ciql.org',
+          user: 'ciql-mailer@ciql.org',
           pass: '#Mailerisfreeandusenodejs1',
         },
       }).catch((e) => {
@@ -28,8 +29,9 @@ describe('All methods in Class mailer', () => {
         host: 'node3-ca.n0c.com',
         port: 465,
         secure: true,
+        pool: true,
         auth: {
-          user: 'mailer@ciql.org',
+          user: 'ciql-mailer@ciql.org',
           pass: '#Mailerisfreeandusenodejs1',
         },
       }).then();
@@ -64,11 +66,11 @@ describe('All methods in Class mailer', () => {
 
   describe('Send Pub methods', () => {
     test('should pass', async () => {
-      await agent.sendPub('Titre', 'Bonnjour, ', 'pour vous tous', 'https://ccu.ciql.org').then()
+      await agent.sendAds('Titre', 'Bonnjour, ', 'pour vous tous', 'https://ccu.ciql.org').then()
     });
 
     test('shouldnt pass', () => {
-      return expect(agent.sendPub()).rejects.toThrow()
+      return expect(agent.sendAds()).rejects.toThrow()
     });
   });
 
